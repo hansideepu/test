@@ -1,13 +1,11 @@
 pipeline{
-    agent any
+    agent { docker { image 'python :3.7'} }
     stages{   
-        stage('Setup') { // Install any dependencies you need to perform testing
+        stage('Build') { // Install any dependencies you need to perform testing
           steps {
-            script {
-              sh """pip install -r requirements.txt"""
+              sh 'pip install -r requirements.txt'
             }
         }
-    }
         stage('testing'){
             steps{
                 sh 'python src/test.py'
