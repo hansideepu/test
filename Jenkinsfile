@@ -3,8 +3,7 @@ pipeline{
     stages{
         stage('Install Dependencies'){
             steps {
-                withEnv(["HOME=${env.WORKSPACE}"]) {
-                    sh 'virtualenv venv && . venv/bin/activate && pip install -r requirements.txt'
+                 sh 'virtualenv venv && . venv/bin/activate && pip install -r requirements.txt && python src/test.py'
                 }
             }    
         }
