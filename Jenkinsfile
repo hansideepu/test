@@ -4,7 +4,7 @@ pipeline{
         stage('Install Dependencies'){
             steps {
                 withEnv(["HOME=${env.WORKSPACE}"]) {
-                    sh 'pip install --user -r requirements.txt'
+                    sh 'virtualenv venv && . venv/bin/activate && pip install -r requirements.txt'
                 }
             }    
         }
