@@ -7,6 +7,7 @@ pipeline{
                     python3 --version
                     python3 -m venv .venv
                     . .venv/bin/activate
+                    pip3 install flask
                     pip3 install -r requirements.txt
                 """
             }
