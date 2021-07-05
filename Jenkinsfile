@@ -2,9 +2,10 @@ pipeline{
     agent any
     stages{
         stage('Install Dependencies'){
-            steps{
-                sh 'pip install -r requirements.txt'
-            }
+            steps {
+                withEnv(["HOME=${env.WORKSPACE}"]) {
+                    sh 'pip install --user -r requirements.txt'
+                }
         }
         stage('testing'){
             steps{
