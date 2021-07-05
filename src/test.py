@@ -1,6 +1,6 @@
 import flask
-from main import app
 import unittest
+from main import app
 
 
 class FlaskTest(unittest.TestCase):
@@ -19,16 +19,11 @@ class FlaskTest(unittest.TestCase):
     def test_login_page_loads(self):
         tester = app.test_client(self)
         response = tester.get('/login', content_type='html/text')
-        self.assertEqual(response.status_code, 200)
+        self.assertIn(b'Please login', response.data)
 
     def test_logout(self):
         tester = app.test_client()
-        tester.post(
-            '/login',
-            data=dict(username="admin", password="admin"),
-            follow_redirects=True
-        )
-        response = tester.get('/logout', follow_redirects=True)
+        response = tester.get('/logout', content_type='html/text')
         self.assertIn(b'You have been logged out of this Page! Please do re-visit', response.data)
 
 
