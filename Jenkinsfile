@@ -2,12 +2,14 @@ pipeline{
     agent any
     stages{   
         stage("Python Test") {
-          agent { 
-            docker {
-              label "docker && linux" 
-              image "python:3.7"
+            steps{
+              agent { 
+                docker {
+                  label "docker && linux" 
+                  image "python:3.7"
+                }
+              }
             }
-          }
         }
         stage('Install dependencies'){
           steps {
