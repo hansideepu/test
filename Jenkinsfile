@@ -1,5 +1,6 @@
 pipeline{
     agent any
+    stages{
         stage('Prepare Build Env') {
             steps {
                 sh """
