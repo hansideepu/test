@@ -1,27 +1,9 @@
-pipeline{
-    agent any
-    stages{
-        //stage('Prepare Build Env') {
-            //steps {
-            //    sh """
-             //       python3 --version
-              //      python3 -m venv .venv
-             //       . .venv/bin/activate
-              //      pip3 install flask
-             //       pip3 install -r requirements.txt
-              //  """
-           // }
-       // }
-    //stages{   
-    //    stage('Install dependencies'){
-    //      steps {
-    //          sh 'pip install -r requirements.txt'
-    //      }
-    //    }
-        stage('testing'){
-            steps{
-                sh 'python -m pip install flask'
-                sh 'python src/test.py'
+pipeline {
+    agent { docker { image 'python:2.7' } }
+    stages {
+        stage('build') {
+            steps {
+                sh 'python --version'
             }
         }
     }
