@@ -4,12 +4,13 @@ pipeline {
         stage('build') {
             steps {
                 sh 'python --version'
-            }
-        }
-        stage('test'){
-            steps{
                 sh 'python src/test.py'
             }
         }
+        //stage('test'){
+        //    steps{
+        //        sh 'python src/test.py'
+        //    }
+       // }
     }
 }
