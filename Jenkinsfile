@@ -20,6 +20,7 @@ pipeline{
     //    }
         stage('testing'){
             steps{
+                sh 'python -m pip install flask'
                 sh 'python src/test.py'
             }
         }
