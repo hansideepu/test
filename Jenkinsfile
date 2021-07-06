@@ -7,7 +7,9 @@ pipeline {
             }
         }
         stage('test'){
-            sh 'python src/test.py'
+            steps{
+                sh 'python src/test.py'
+            }
         }
     }
 }
